@@ -1,100 +1,146 @@
-# WeatherCast
+# Weather-Cast
 
-Objective: Build a scalable, end-to-end data pipeline to collect, process, analyze, and visualize weather data in real time, while leveraging modern data engineering tools and techniques.
+A comprehensive data engineering project that implements an end-to-end ETL pipeline for weather data, incorporating data collection, storage, transformation, and visualization.
 
-### **Project Components and Tools** :
+> Deployed at: [https://weather-cast.streamlit.app/](https://weather-cast.streamlit.app/)
 
-#### 1. **Data Ingestion**
+### 1. **Data Ingestion**
 
-* **Source** : Use a public weather API like [OpenWeatherMap]() or [WeatherStack](https://weatherstack.com/).
+* **Source** :  [OpenWeatherMap]() API.
 * **Tools** :
   * Python scripts for API calls (`requests`, `airflow` operators).
-  * Apache Kafka for real-time data streaming.
-* **Frequency** : Pull weather data (temperature, humidity, wind speed, etc.) every 15 minutes for multiple locations.
+* **Frequency** : 15-min intervals via Airflow DAG
+* **Metrics :** Temperature, Pressure, Humidity, Wind Speed, Cloud Cover
 
 ---
 
-#### 2. **Data Storage**
+### 2. **Storage Layer**
 
 * **Raw Data Storage** :
-  * AWS S3 or Google Cloud Storage (GCS) for storing raw JSON responses.
-* **Database** :
-  * PostgreSQL or MySQL for structured data.
-  * MongoDB for semi-structured weather metadata.
+  * **-****Local Storage******: JSON files organized by city and timestamp
+  * **-****Cloud Storage******: AWS S3 bucket with hierarchical structure
+* ```
+  s3://bucket-name/
+       └── raw/
+           ├── Los_Angeles/
+           │   └── YYYY-MM-DD/
+           │       └── HH-MM.json
+           └── New_York/
+               └── YYYY-MM-DD/
+                   └── HH-MM.json
+
+
+  ```
+* **Processed Data Storage:**
+  * AWS(PostgreSQL) for transformed data storage and fast retrieval.
+  * Schema Structure -
+    ```
+    weather_data (
+             id SERIAL PRIMARY KEY,
+             location VARCHAR(255),
+             temperature FLOAT,
+             pressure FLOAT,
+             humidity FLOAT,
+             wind_speed FLOAT,
+             cloud_cover INT,
+             date DATE,
+             time TIME,
+             created_at TIMESTAMP
+         )
+    ```
 * **Data Lake** :
-  * Use a data lake (e.g., AWS S3 or Delta Lake) for raw and processed data.
+  * S3 as data lake for storing backup.
 
 ---
 
-#### 3. **Data Processing**
+### 3. **ETL Pipeline**
 
-* **Batch Processing** :
-  * Apache Spark (PySpark) to clean, transform, and aggregate historical data for analysis.
-* **Stream Processing** :
-  * Apache Kafka Streams or Apache Flink for processing real-time weather data and calculating live metrics like average temperature, wind speed, etc.
+* **1.****Extract******
+
+  - Fetch real-time weather data from OpenWeather API
+  - Data validation and error handling
+  - Raw data persistence in both local and S3 storage
+* **2.****Transform******
+  **-** Temperature conversion (Kelvin to Celsius)
+  **-** Data standardization
+  **-** Timestamp processing
+  **-** Data quality checks
+* **3.****Load******
+  **-** Incremental loading to RDS
+  **-** Duplicate handling
+  **-** Data integrity validation
 
 ---
 
-#### 4. **ETL Pipeline**
+### 4.Orchestration
 
 * **Tools** : Apache Airflow for orchestrating ETL workflows.
 * **Workflow** :
-  * Extract: Ingest data from API into S3 or Kafka.
-  * Transform: Use PySpark/Snowflake to clean and normalize data.
-  * Load: Store processed data into a relational database or warehouse (e.g., Snowflake, Redshift).
+  * create_table >> fetch_weather_data >> [local storage, upload_to_s3, insert_into_rds] >> [store processed data in S3(backup)]
 
 ---
 
-#### 5. **Data Warehouse**
+### 6. **Data Visualization**
 
-* **Tool** :
-  * Snowflake, BigQuery, or Amazon Redshift.
-* **Purpose** : Store aggregated data for querying and analytics.
+**
+    Framework**: Streamlit
 
----
+**
+    Features**:
 
-#### 6. **Data Visualization**
+    - Real-time metrics display
 
-* **Tools** :
-  * Power BI, Tableau, or Looker for dashboards.
-* Visualize metrics like temperature trends, extreme weather events, and location-based comparisons.
+    - Historical trend analysis
 
----
+    - Interactive time-series plots
 
-#### 7. **Machine Learning (Optional)**
-
-* Build a simple ML model to predict temperature or precipitation using historical weather data.
-* Tools: Scikit-learn or TensorFlow for modeling.
+    - Theme customization
 
 ---
 
-#### 8. **Monitoring and Logging**
+Version 2.0 - Currenly working on
 
-* **Tools** :
-  * Prometheus and Grafana for monitoring pipeline health.
-  * ELK Stack (Elasticsearch, Logstash, Kibana) for logging and analytics.
+### 7. **Machine Learning**
 
----
-
-#### 9. **CI/CD and Infrastructure Automation**
-
-* **Tools** :
-  * GitHub Actions or Jenkins for CI/CD.
-  * Terraform or AWS CloudFormation for provisioning infrastructure.
-  * Deploy pipeline components in Docker containers, orchestrated with Kubernetes.
+* Using LSTM to forecast for next 30 days (integration left, training and tuning done)
+* Orchestration  - updating the next 30 days automatically, adding to existing Airflow DAG (remaining)
 
 ---
 
-#### 10. **Scalability**
 
-* Use AWS Lambda or Google Cloud Functions for serverless components.
-* Configure Kafka topics and Spark jobs to handle high throughput.
 
----
+## Deployment
 
-### **Deliverables** :
+### Pipeline Deployment
 
-1. A scalable data pipeline that ingests, processes, and stores weather data.
-2. A live dashboard showing real-time weather insights and historical trends.
-3. Documentation for pipeline architecture and setup instructions.
-4. Optional: A prediction model for weather forecasting.
+```bash
+# Start Airflow services
+docker-compose up -d
+
+# Access Airflow UI
+http://localhost:8080
+```
+
+
+### Dashboard Deployment
+
+* Hosted on Streamlit Cloud
+* Continuous deployment from GitHub repository
+* Environment variables managed through Streamlit Secrets
+
+
+## Monitoring & Maintenance
+
+### Data Quality Checks
+
+* Schema validation
+* Data type verification
+* Null value handling
+* Duplicate detection
+
+### Pipeline Monitoring
+
+* Airflow task success rate
+* Data freshness monitoring
+* Error logging and alerting
+* Performance metrics tracking
