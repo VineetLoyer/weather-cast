@@ -10,7 +10,7 @@ def fetch_weather(location):
     params = {"q": location, "appid": OPENWEATHER_API_KEY}
     
     # Example of API call:
-    #       api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=6c1ea51197146aa25f554a4b7f3da8f3
+    #       api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=key
     
     try:
         response = requests.get(BASE_URL, params=params)
