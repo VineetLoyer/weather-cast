@@ -3,12 +3,19 @@ import pandas as pd
 from sqlalchemy import create_engine
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from config import DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASS, APP_TITLE
 import time
 
-def init_connection():
-    return create_engine(f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}")
+APP_TITLE = "WeatherCast : Real-time Weather Analytics Dashboard"
 
+def init_connection():
+    try:
+        connection_string = f"postgresql://{st.secrets['DB_USER']}:{st.secrets['DB_PASS']}@{st.secrets['DB_HOST']}:{st.secrets['DB_PORT']}/{st.secrets['DB_NAME']}"
+        return create_engine(connection_string)
+    except Exception as e:
+        st.error(f"🚨 Database connection failed: {str(e)}")
+        st.error(f"Please check if database credentials are properly set in Streamlit secrets.")
+        return None
+    
 def setup_page():
     st.set_page_config(page_title=APP_TITLE, layout="wide", initial_sidebar_state="expanded")
     
@@ -38,6 +45,9 @@ def setup_page():
 def fetch_weather_data():
     try:
         engine = init_connection()
+        if engine is None:
+            return pd.DataFrame()
+            
         query = """
             SELECT * FROM weather_data 
             WHERE date = CURRENT_DATE
@@ -46,9 +56,9 @@ def fetch_weather_data():
         df = pd.read_sql(query, engine)
         return df
     except Exception as e:
-        st.error(f"🚨 Database connection failed: {e}")
+        st.error(f"🚨 Error fetching data: {str(e)}")
         return pd.DataFrame()
-
+    
 def create_weather_plots(city_data, selected_city, plotly_theme):
     fig = make_subplots(
         rows=3, cols=2,
