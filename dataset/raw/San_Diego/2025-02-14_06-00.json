@@ -1,0 +1,55 @@
+{
+    "coord": {
+        "lon": -117.1573,
+        "lat": 32.7153
+    },
+    "weather": [
+        {
+            "id": 501,
+            "main": "Rain",
+            "description": "moderate rain",
+            "icon": "10n"
+        },
+        {
+            "id": 701,
+            "main": "Mist",
+            "description": "mist",
+            "icon": "50n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 287.4,
+        "feels_like": 287.36,
+        "temp_min": 286.65,
+        "temp_max": 288.46,
+        "pressure": 1017,
+        "humidity": 95,
+        "sea_level": 1017,
+        "grnd_level": 1013
+    },
+    "visibility": 2816,
+    "wind": {
+        "speed": 8.23,
+        "deg": 180,
+        "gust": 15.95
+    },
+    "rain": {
+        "1h": 2.37
+    },
+    "clouds": {
+        "all": 100
+    },
+    "dt": 1739512804,
+    "sys": {
+        "type": 2,
+        "id": 2095167,
+        "country": "US",
+        "sunrise": 1739457208,
+        "sunset": 1739496745
+    },
+    "timezone": -28800,
+    "id": 5391811,
+    "name": "San Diego",
+    "cod": 200
+}

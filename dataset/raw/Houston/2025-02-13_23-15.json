@@ -1,0 +1,46 @@
+{
+    "coord": {
+        "lon": -95.3633,
+        "lat": 29.7633
+    },
+    "weather": [
+        {
+            "id": 803,
+            "main": "Clouds",
+            "description": "broken clouds",
+            "icon": "04d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 285.73,
+        "feels_like": 284.43,
+        "temp_min": 284.9,
+        "temp_max": 286.56,
+        "pressure": 1027,
+        "humidity": 53,
+        "sea_level": 1027,
+        "grnd_level": 1024
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 6.69,
+        "deg": 20,
+        "gust": 11.32
+    },
+    "clouds": {
+        "all": 75
+    },
+    "dt": 1739487911,
+    "sys": {
+        "type": 2,
+        "id": 2001415,
+        "country": "US",
+        "sunrise": 1739451759,
+        "sunset": 1739491733
+    },
+    "timezone": -21600,
+    "id": 4699066,
+    "name": "Houston",
+    "cod": 200
+}

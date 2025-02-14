@@ -1,0 +1,55 @@
+{
+    "coord": {
+        "lon": -118.2437,
+        "lat": 34.0522
+    },
+    "weather": [
+        {
+            "id": 501,
+            "main": "Rain",
+            "description": "moderate rain",
+            "icon": "10n"
+        },
+        {
+            "id": 701,
+            "main": "Mist",
+            "description": "mist",
+            "icon": "50n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 285.84,
+        "feels_like": 285.62,
+        "temp_min": 284.26,
+        "temp_max": 287.36,
+        "pressure": 1014,
+        "humidity": 94,
+        "sea_level": 1014,
+        "grnd_level": 994
+    },
+    "visibility": 4828,
+    "wind": {
+        "speed": 7.72,
+        "deg": 200,
+        "gust": 13.38
+    },
+    "rain": {
+        "1h": 2.05
+    },
+    "clouds": {
+        "all": 100
+    },
+    "dt": 1739497273,
+    "sys": {
+        "type": 2,
+        "id": 2034962,
+        "country": "US",
+        "sunrise": 1739457573,
+        "sunset": 1739496901
+    },
+    "timezone": -28800,
+    "id": 5368361,
+    "name": "Los Angeles",
+    "cod": 200
+}

@@ -1,0 +1,48 @@
+{
+    "coord": {
+        "lon": -112.074,
+        "lat": 33.4484
+    },
+    "weather": [
+        {
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 291.71,
+        "feels_like": 290.61,
+        "temp_min": 290.57,
+        "temp_max": 292.78,
+        "pressure": 1015,
+        "humidity": 38,
+        "sea_level": 1015,
+        "grnd_level": 972
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 1.54,
+        "deg": 240
+    },
+    "rain": {
+        "1h": 0.56
+    },
+    "clouds": {
+        "all": 100
+    },
+    "dt": 1739488304,
+    "sys": {
+        "type": 2,
+        "id": 2008537,
+        "country": "US",
+        "sunrise": 1739456046,
+        "sunset": 1739495467
+    },
+    "timezone": -25200,
+    "id": 5308655,
+    "name": "Phoenix",
+    "cod": 200
+}

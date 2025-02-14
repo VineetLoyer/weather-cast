@@ -1,0 +1,48 @@
+{
+    "coord": {
+        "lon": -121.895,
+        "lat": 37.3394
+    },
+    "weather": [
+        {
+            "id": 501,
+            "main": "Rain",
+            "description": "moderate rain",
+            "icon": "10d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 286.82,
+        "feels_like": 286.41,
+        "temp_min": 285.51,
+        "temp_max": 287.76,
+        "pressure": 1004,
+        "humidity": 83,
+        "sea_level": 1004,
+        "grnd_level": 975
+    },
+    "visibility": 6437,
+    "wind": {
+        "speed": 4.63,
+        "deg": 230
+    },
+    "rain": {
+        "1h": 1.74
+    },
+    "clouds": {
+        "all": 100
+    },
+    "dt": 1739491290,
+    "sys": {
+        "type": 2,
+        "id": 2004102,
+        "country": "US",
+        "sunrise": 1739458722,
+        "sunset": 1739497504
+    },
+    "timezone": -28800,
+    "id": 5392171,
+    "name": "San Jose",
+    "cod": 200
+}

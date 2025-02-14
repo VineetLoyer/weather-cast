@@ -1,0 +1,7 @@
+weather_env/
+.env
+secrets.toml
+__pycache__/
+*.pyc
+.DS_Store
+logs/

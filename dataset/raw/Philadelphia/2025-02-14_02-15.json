@@ -1,0 +1,46 @@
+{
+    "coord": {
+        "lon": -75.1638,
+        "lat": 39.9523
+    },
+    "weather": [
+        {
+            "id": 802,
+            "main": "Clouds",
+            "description": "scattered clouds",
+            "icon": "03n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 276.54,
+        "feels_like": 270.67,
+        "temp_min": 275.24,
+        "temp_max": 277.16,
+        "pressure": 1023,
+        "humidity": 56,
+        "sea_level": 1023,
+        "grnd_level": 1018
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 9.77,
+        "deg": 300,
+        "gust": 13.38
+    },
+    "clouds": {
+        "all": 40
+    },
+    "dt": 1739499303,
+    "sys": {
+        "type": 2,
+        "id": 2037403,
+        "country": "US",
+        "sunrise": 1739447751,
+        "sunset": 1739486045
+    },
+    "timezone": -18000,
+    "id": 4560349,
+    "name": "Philadelphia",
+    "cod": 200
+}

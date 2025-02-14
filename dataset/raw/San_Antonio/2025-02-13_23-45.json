@@ -1,0 +1,46 @@
+{
+    "coord": {
+        "lon": -98.4936,
+        "lat": 29.4241
+    },
+    "weather": [
+        {
+            "id": 804,
+            "main": "Clouds",
+            "description": "overcast clouds",
+            "icon": "04d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 282.1,
+        "feels_like": 279.18,
+        "temp_min": 280.79,
+        "temp_max": 283.05,
+        "pressure": 1029,
+        "humidity": 52,
+        "sea_level": 1029,
+        "grnd_level": 1002
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 5.66,
+        "deg": 10,
+        "gust": 11.83
+    },
+    "clouds": {
+        "all": 100
+    },
+    "dt": 1739490433,
+    "sys": {
+        "type": 2,
+        "id": 2038203,
+        "country": "US",
+        "sunrise": 1739452485,
+        "sunset": 1739492509
+    },
+    "timezone": -21600,
+    "id": 4726206,
+    "name": "San Antonio",
+    "cod": 200
+}
